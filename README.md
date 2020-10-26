@@ -1,8 +1,12 @@
 # ORLabosi
 **licence**: Creative Commons Zero v1.0 Universal
+
 **autor**: Klara Krmpotić
+
 **verzija skupa podataka**: lab 1.0
+
 **jezik**: hrvatski, engleski
+
 **atributi**: 
 1. *idHotel* - jedinstvena oznaka hotela
 2. *imeHotel* - službeno ime hotela
