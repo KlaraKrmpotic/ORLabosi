@@ -1,0 +1,153 @@
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: grad; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.grad (
+    idgrad integer NOT NULL,
+    nazivgrad character varying(100) NOT NULL,
+    pbrgrad integer NOT NULL
+);
+
+
+ALTER TABLE public.grad OWNER TO postgres;
+
+--
+-- Name: hotel; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.hotel (
+    idhotel integer NOT NULL,
+    imehotel character varying(100) NOT NULL,
+    brzvjezdica integer NOT NULL,
+    telefonhotel character(15) NOT NULL,
+    email character varying(100) NOT NULL,
+    adresahotel character varying(100) NOT NULL,
+    brojsoba integer NOT NULL,
+    wikistranica character varying(50) NOT NULL,
+    godizgradnje integer NOT NULL,
+    idlanac integer,
+    idgrad integer NOT NULL
+);
+
+
+ALTER TABLE public.hotel OWNER TO postgres;
+
+--
+-- Name: lanachotel; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.lanachotel (
+    idlanac integer NOT NULL,
+    imelancahotela character varying(100) NOT NULL,
+    idgrad integer NOT NULL
+);
+
+
+ALTER TABLE public.lanachotel OWNER TO postgres;
+
+--
+-- Data for Name: grad; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.grad (idgrad, nazivgrad, pbrgrad) FROM stdin;
+1       Zagreb  10000
+2       Pula    52100
+3       Opatija 51410
+4       Split   21000
+5       Crikvenica      51260
+6       Minnetonka      55300
+7       Denham  9
+8       Osijek  31000
+\.
+
+
+--
+-- Data for Name: hotel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.hotel (idhotel, imehotel, brzvjezdica, telefonhotel, email, adresahotel, brojsoba, wikistranica, godizgradnje, idlanac, idgrad) FROM stdin;
+1       Hotel Esplanada 5       +38514566666    info@espalnada.hr       MihanoviÄ╪eva 1 208     Hotel_Esplanada 1925   21
+2       Hotel Dubrovnik 4       +38514863512    info@hotel-dubrovnik.hr Ljudevta Gaja 1 237     Hotel_Dubrovnik 1929   \N       1
+3       Grand Hotel Riviera     4       +38552211166    arenariviera@arenahotels.com    Splitska 1      67      Grand_Hotel_Riviera_u_Puli      1909    1       2
+4       Hotel Imperial  4       +38551710440    reservations@liburnia.hr        MarÅ¡ala Tita 124       127     Hotel_Imperial_u_Opatiji        1885    \N      3
+5       Hotel Kvarner   4       +38551710440    reservations@liburnia.hr        Ulica Pava TomaÅ¡iÄ╪a 2 87      Hotel_Kvarner   1884    \N      3
+6       Hotel Osijek    4       +38531230333    info@hotelosijek.hr     Å amaÄ?ka 4     140     Hotel_Osijek    1977   \N       8
+7       Hotel Slavija   3       +38521323840    info@hotelslavija.hr    Ulica Andrije Buvine 2  25      Hotel_Slavija_u_Splitu  1900    \N      4
+8       Hotel Omorika   4       +38551800480    reservations@jadran-crikvenica.hr       Bana JelaÄ?iÄ╪a 16      115    Hotel_Omorika    1973    \N      5
+9       Hotel Histria   4       +38552590000    pphpres@pphe.com        Verudella 17    210     Hotel_Histria   1987   12
+10      Hotel Brioni    2       +38552215585    arenabrioni@arenahotels.com     Verudella 16    210     Hotel_Brioni   1971     1       2
+\.
+
+
+--
+-- Data for Name: lanachotel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.lanachotel (idlanac, imelancahotela, idgrad) FROM stdin;
+1       Park Plaza      6
+2       Regent Hotels & Resorts 7
+\.
+
+
+--
+-- Name: grad grad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.grad
+    ADD CONSTRAINT grad_pkey PRIMARY KEY (idgrad);
+
+
+--
+-- Name: hotel hotel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.hotel
+    ADD CONSTRAINT hotel_pkey PRIMARY KEY (idhotel);
+
+
+--
+-- Name: lanachotel lanachotel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lanachotel
+    ADD CONSTRAINT lanachotel_pkey PRIMARY KEY (idlanac);
+
+
+--
+-- Name: hotel hotel_idgrad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.hotel
+    ADD CONSTRAINT hotel_idgrad_fkey FOREIGN KEY (idgrad) REFERENCES public.grad(idgrad);
+
+
+--
+-- Name: hotel hotel_idlanac_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.hotel
+    ADD CONSTRAINT hotel_idlanac_fkey FOREIGN KEY (idlanac) REFERENCES public.lanachotel(idlanac);
+
+
+--
+-- Name: lanachotel lanachotel_idgrad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lanachotel
+    ADD CONSTRAINT lanachotel_idgrad_fkey FOREIGN KEY (idgrad) REFERENCES public.grad(idgrad);
+
