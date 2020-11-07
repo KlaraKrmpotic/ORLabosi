@@ -10,11 +10,12 @@
 **atributi**: 
 1. *idHotel* - jedinstvena oznaka hotela
 2. *imeHotel* - službeno ime hotela
-3. *lanacHotel* - kojem lancu hotel pripada
-4. *gradHotel* - grad u kojem se hotel nalazi
-5. *adresaHotel* - adresa hotela u gradu u kojem se nalazi
-6. *pbrHotel* - poštanski broj grada u kojem se hotel nalazi
-7. *brZvjezdica* - koliko zvjezdica ima hotel
+3. *BrZvjezdica* - Koliko zvjezdica hotel ima
+4. *telefonHotel* - telefonsi broj recepcije hotela
+5. *email* - email adresa hotela
+6. *adresaHotel* - adresa hotela
+7. *brojSoba* - koliko ukupno soba ima u hoteli
 8. *wikiStranica* - wikiStranica hotela/lanca hotela
-9. *telefonHotel* - telefonsi broj recepcije hotela
-10. *bazen* - je li ima bazen, ako ima kakav (unutarnji i/ili vanjski)
+9. *godIzgradnje* - kada je hotel izgrađen 
+10. *idLanac* - id lanca hotela kojemu hotel pripada
+11. *idGrad* - grad u kojem se hotel nalazi
