@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datatable</title>
+    <meta name="author" content="Klara Krmpotić">
+    <meta name="description" content="Search engine for database tables">
+    <meta charset="UTF-12">
+    <link rel="stylesheet" type="text/css" href="./datatable.css">
+</head>
+<body>
+
+    <header class="header ">
+        <nav class="navigation container">
+            <div class="menu">
+                <a href="index.html" class="link link-active menu-item">Home</a>
+                <a href="index.html" class="link">
+                    <img class="scaled-image scaled-image-fixed" src="images/hotel_logo.jpg" alt="Hotel logo">
+                </a>
+                <a href="datatable.html" class="link menu-item">Datatable</a>
+            </div>
+        </nav>
+    </header>
+
+    <h2>Polje za pretragu</h2>
+
+    <form action="/action_page.php">
+        <input type="text" id="vrijednost" name="vrijednost" placeholder="Unesite vrijednost"><br>
+        <a>Po ovoj vrijednosti će se pretraživati podaci</a><br><br>
+        <label for="polje">Odaberi polje za pretragu:</label>
+        <select name="polje" id="polje" placeholder="Odaberi polje">
+            <option value="sve">Sva polja (wildcard)</option>
+            <option value="idHotel">ID</option>
+            <option value="imeHotel">Ime</option>
+            <option value="brZvjezdica">Broj zvjezdica</option>
+            <option value="telefonHotel">Telefon</option>
+            <option value="email">Email</option>
+            <option value="adresaHotel">Adresa</option>
+            <option value="brojSoba">Broj soba</option>
+            <option value="wikiStranica">Wikipedia stranica</option>
+            <option value="godIzgradnje">Godina izgradnje</option>
+            <option value="nazivGrad">Grad</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Pretraži">
+    </form>
+    <!--HTML tablice koja se zajedno s obrascem za filtriranje i asinkronim pozivom (AJAX) za dohvaćanje podataka-->
+
+    <tr>    <!--Popis atributa-->
+        <th>Hotel ID</th>
+        <th>Ime hotela</th>
+        <th>Broj zvjezdica</th>
+        <th>Godina izgradnje</th>
+        <th>Wiki handle</th>
+        <th>Telefon</th>
+        <th>Adresa</th>
+        <th>Email</th>
+        <th>Broj soba</th>
+        <th>Ime grada</th>
+        <th>Poštanski broj</th>
+    </tr>
+
+</body>
+</html>
