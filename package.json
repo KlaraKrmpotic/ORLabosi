@@ -1,0 +1,25 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "Otvoreno racunarstvo laboratorijska vjezba 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node db/index.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Klara Krmpotic",
+  "license": "ISC",
+  "dependencies": {
+    "connect-pg-simple": "^6.2.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.4.1",
+    "mysql": "^2.18.1",
+    "pg": "^8.0.3"
+  }
+}
