@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/hoteliHrv1.json",
+    "type": "array",
+    "title": "Hoteli u Hrvatskoj",
+    "description": "Skup hotela u Hrvatskoj",
+    "items": {
+        "type": "object",
+		"title": "Hotel",
+		"description": "Objekt koji sadrži sve podatke o jednom filmu.",
+		"required": [ "idhotel", "imehotel", "brzvjezdica", "telefonhotel", "email", "adresahotel",
+						"brojsoba", "wikistranica", "godizgradnje", "nazivgrad", "pbrgrad"],
+		"properties": {
+			"idHotel": {
+				"type": "int",
+				"title": "ID hotela",
+				"description": "jedinstveni id svakog hotela."
+			},
+			"imeHotel": {
+			"type": "string",
+			"title": "Ime hotela",
+			"description": "Naziv filma."
+			}, 
+			"brZvjezdica": {
+				"type": "int",
+				"title": "broj zvjezdica",
+				"description": "Koliko zvjezdica hotel ima"
+			},
+			"telefonhotel": {
+			"type": "string",
+			"title": "Telefon hotela",
+			"description": "Telefon hotela"
+			},
+			"email": {
+				"type": "string",
+				"title": "Email hotel",
+				"description": "Email hotela"
+			},
+			"adresahotel": {
+				"type": "string",
+				"title": "Adresa hotela",
+				"description": "Adresa hotela u gradu"
+			},
+			"brojsoba": {
+				"type": "string",
+				"title": "Broj soba",
+				"description": "Koliko soba hotel ima"
+			},
+			"wikistranica": {
+				"type": "string",
+				"title": "Wikipedia handle",
+				"description": "Wikipedia handle od stranice hotela"
+			},
+			"godizgradnje": {
+				"type": "int",
+				"title": "Godina izgradnje",
+				"description": "Kada je hotel izgrađen"
+			},
+			"nazivgrad": {
+				"type": "string",
+				"title": "Ime grada",
+				"description": "Ime grada u kojemu se hotel nalazi"
+			},
+			"pbrgrad": {
+				"type": "int",
+				"title": "Poštanski broj",
+				"description": "Poštanski broj grada u kojem se hotel nalazi"
+			}
+		}
+		
+		
+	}	
+}
