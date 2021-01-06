@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit</title>
+    <meta name="author" content="Klara Krmpotić">
+    <meta name="description" content="Search engine for database tables">
+    <meta charset="UTF-12">
+    <link rel="stylesheet" type="text/css" href="/public/style/index.css">
+</head>
+<body>
+
+    <main>
+        <h1>Promjena hotela</h1>
+        <% for (let h of hotel) { %> 
+
+        <form name="form1" method="POST" action="/datatable/edit/<%= h.idhotel %>">
+            <table>
+                    <tr> 
+                        <td>Ime hotela</td>
+                        <td><input type="text" name="imehotel" value="<%= h.imehotel %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Broj zvjezdica</td>
+                        <td><input type="text" name="brzvjezdica" value="<%= h.brzvjezdica %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Email</td>
+                        <td><input type="text" name="email" value="<%= h.email %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Telefon</td>
+                        <td><input type="text" name="telefonhotel" value="<%= h.telefonhotel %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Adresa</td>
+                        <td><input type="text" name="adresahotel" value="<%= h.adresahotel %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Broj soba</td>
+                        <td><input type="text" name="brojsoba" value="<%= h.brojsoba %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Wiki handle</td>
+                        <td><input type="text" name="wikistranica" value="<%= h.wikistranica %>" /></td>
+                    </tr>
+                    <tr> 
+                        <td>Godina izgradnje</td>
+                        <td><input type="text" name="godizgradnje" value="<%= h.godizgradnje %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Grad u kojemu se hotel nalazi</td>
+                        <td>
+                            <% for (let grad of gradovi) { %>
+                                <% if(grad.pbrgrad == h.pbrgrad) { %>
+                                    <input type="radio" name="idGrad" value="<%= grad.idgrad %>" checked> <%= grad.idgrad %> ( <%= grad.nazivgrad %> )
+                                <% }  else { %>
+                                    <input type="radio" name="idGrad" value="<%= grad.idgrad %>"> <%= grad.idgrad %> ( <%= grad.nazivgrad %> )
+                                <% } %>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td></td>
+                        <td><input type="submit" name="Submit" value="Edit" /></td>
+                    </tr>
+            </table>
+            <input type="hidden" name="_method" value="PUT" />
+        </form>
+        <% } %>
+    </main>
+    
+</body>
+
+</html>

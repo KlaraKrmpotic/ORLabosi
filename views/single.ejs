@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single record</title>
+    <meta name="author" content="Klara Krmpotić">
+    <meta name="description" content="Search engine for database tables">
+    <meta charset="UTF-12">
+    <link rel="stylesheet" type="text/css" href="/public/style/index.css">
+</head>
+
+<body>
+
+    <main>
+        <h2>Pojedinačni prikaz hotela</h2>
+        <!--HTML tablice koja se zajedno s obrascem za filtriranje i asinkronim pozivom za dohvaćanje podataka-->
+        <p>
+
+        </p>
+        <table>
+            <tr>    <!--Popis atributa-->
+                <th>Hotel ID    </th>
+                <th>Ime hotela  </th>
+                <th>Broj zvjezdica  </th>
+                <th>Telefon </th>
+                <th>Email   </th>
+                <th>Adresa  </th>
+                <th>Broj soba   </th>
+                <th>Wiki handle </th>
+                <th>Godina izgradnje</th>
+                <th>Ime grada   </th>
+                <th>Poštanski broj  </th>
+            </tr>
+            <tr id="promjena">
+                <% for (let h of hotel) { %>
+                    <td> <%= h.idhotel %> </td>
+                    <td> <%= h.imehotel %> </td>
+                    <td> <%= h.brzvjezdica %> </td>
+                    <td> <%= h.telefonhotel %> </td>
+                    <td> <%= h.email %> </td>
+                    <td> <%= h.adresahotel %> </td>
+                    <td> <%= h.brojsoba %> </td>
+                    <td> <%= h.wikistranica %> </td>
+                    <td> <%= h.godizgradnje %> </td>
+                    <td> <%= h.nazivgrad %> </td>
+                    <td> <%= h.pbrgrad %> </td>
+                <% } %>
+            </tr>
+        </table>
+    </main>
+
+</body>
+
+<script>
+
+</script>
+
+</html>

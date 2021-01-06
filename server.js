@@ -1,4 +1,3 @@
-//uvoz modula
 const express = require('express');
 const app = express();
 const pg = require('pg')
@@ -9,29 +8,22 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
-    res.render('index', {
-        title: 'Index',
-        linkActive: 'index'
-    });
-});
+var index = require('./routes/index')
+var datatable = require('./routes/datatable')
 
-app.get('/datatable', async function (req, res) {
+app.use('/', index)
+app.use('/datatable', datatable)
 
-    const sqlHotels = `SELECT idHotel, imeHotel, brZvjezdica, godIzgradnje, wikiStranica, telefonHotel, adresaHotel, email, brojSoba, nazivGrad, pbrgrad
-                        FROM hotel INNER JOIN grad ON hotel.idGrad = grad.idGrad ORDER BY idHotel;`;
-    try {
-        const resultHotels = (await db.query(sqlHotels, [])).rows;
-        res.render('datatable', {
-            title: 'Datatable',
-            hotels: resultHotels,
-            linkActive: 'datatable',
-        });
-    } catch (err) {
-        console.log(err);
-    }
+const methodOverride = require('method-override')
+ 
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     
-});
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 
 module.exports = router;
 

@@ -25,7 +25,7 @@ const sql_create_hotel = `CREATE TABLE HOTEL (
     email 		VARCHAR(100) NOT  null,
     adresaHotel VARCHAR(100) NOT  null,
     brojSoba	INT			 NOT  null,
-    wikiStranica VARCHAR(50)  NOT  null,
+    wikiStranica VARCHAR(50) NOT  null,
     godIzgradnje INT 		 NOT  null,
     idGrad 		INT 		 NOT  null,
     PRIMARY KEY (idHotel),

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dodaj hotel</title>
+    <meta name="author" content="Klara Krmpotić">
+    <meta name="description" content="Search engine for database tables">
+    <meta charset="UTF-12">
+    <link rel="stylesheet" type="text/css" href="/public/style/index.css">
+</head>
+<body>
+
+    
+    <main>
+
+        <h1>Dodaj novi hotel</h1><br>
+
+        <p>
+            <form name="formReturn" method="GET" action="/datatable">
+                <input class="math-btn" type="submit" name="datatable" value='Vrati se natrag'/>
+            </form>
+        </p><br>
+
+        
+        <form name="formAdd" method="POST" action="/datatable/dodaj">
+            <table>
+                <tr> 
+                    <td>ID hotela</td>
+                    <td><input type="text" name="idHotel" id="idHotel" value="<%= idHotel %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Ime hotela</td>
+                    <td><input type="text" name="imeHotel" id="imeHotel" value="<%= imeHotel %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Broj zvjezdica</td>
+                    <td><input type="text" name="brZvjezdica" id="brZvjezdica" value="<%= brZvjezdica %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Telefon hotela</td>
+                    <td><input type="text" name="telefonHotel" id="telefonHotel" value="<%= telefonHotel %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Email hotela</td>
+                    <td><input type="text" name="email" id="email" value="<%= email %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Adresa hotela</td>
+                    <td><input type="text" name="adresaHotel" id="adresaHotel" value="<%= adresaHotel %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Broj soba</td>
+                    <td><input type="text" name="brojSoba" id="brojSoba" value="<%= brojSoba %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Wiki handle stranice hotela</td>
+                    <td><input type="text" name="wikiStranica" id="wikiStranica" value="<%= wikiStranica %>" /></td>
+                </tr>
+                <tr> 
+                    <td>Godina izgradnje</td>
+                    <td><input type="text" name="godIzgradnje" id="godIzgradnje" value="<%= godIzgradnje %>" /></td>
+                </tr>
+                <tr>
+                    <td>Grad u kojemu se hotel nalazi</td>
+                    <td>
+                        <% for (let grad of gradovi) { %>
+                        <input type="radio" name="idGrad" value="<%= grad.idgrad %>"> <%= grad.idgrad %> ( <%= grad.nazivgrad %> )
+                        <% } %>
+                    </td>
+                </tr>
+                <tr> 
+                    <td></td>
+                    <td><input type="submit" name="Submit" value="Dodaj" /></td>
+                </tr>
+            </table>
+        </form>
+    </main>
+    
+</body>
+
+</html>

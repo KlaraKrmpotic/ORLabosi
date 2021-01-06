@@ -5,93 +5,98 @@
     <meta name="author" content="Klara Krmpotić">
     <meta name="description" content="Search engine for database tables">
     <meta charset="UTF-12">
-    <link rel="stylesheet" type="text/css" href="./style/datatable.css">
+    <link rel="stylesheet" type="text/css" href="/public/style/index.css">
 </head>
 
 <body>
 
-    <%- include(`header`); %>
+    <%- include(`partials/header`); %>
 
-    <h2>Polje za pretragu</h2>
+    <main>
+        <h2>Polje za pretragu</h2>
 
-    <form action="">
-        <input type="text" id="vrijednost" name="vrijednost" placeholder="Unesite vrijednost"><br>
-        <a>Po ovoj vrijednosti će se pretraživati podaci</a><br><br>
-        <label for="polje">Odaberi polje za pretragu:</label>
-        <select name="polje" id="polje" placeholder="Odaberi polje" onchange="kojePolje(this.value)">
-            <option value="sve">Sva polja (wildcard)</option>
-            <option value="idHotel">ID</option>
-            <option value="imeHotel">Ime</option>
-            <option value="brZvjezdica">Broj zvjezdica</option>
-            <option value="telefonHotel">Telefon</option>
-            <option value="email">Email</option>
-            <option value="adresaHotel">Adresa</option>
-            <option value="brojSoba">Broj soba</option>
-            <option value="wikiStranica">Wikipedia stranica</option>
-            <option value="godIzgradnje">Godina izgradnje</option>
-            <option value="nazivGrad">Grad</option>
-            <option value="pbrgrad">Poštanski broj</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Pretraži" onclick="pretrazi()">
-    </form>
-    <!--HTML tablice koja se zajedno s obrascem za filtriranje i asinkronim pozivom za dohvaćanje podataka-->
+        <form class="poljePretraga" name="formFilter" method="POST" action="/datatable/filter">
+            <a>Po ovoj vrijednosti će se pretraživati podaci</a>
+            <input type="text" id="vrijednost" name="vrijednost" placeholder="Unesite vrijednost"><br>
+            <br><br>
+            <label for="polje">Odaberi polje za pretragu:</label>
+            <select name="polje" id="polje" placeholder="Odaberi polje" onchange="kojePolje(this.value)">
+                <option value="sve">Sva polja (wildcard)</option>
+                <option value="idHotel">ID</option>
+                <option value="imeHotel">Ime</option>
+                <option value="brZvjezdica">Broj zvjezdica</option>
+                <option value="telefonHotel">Telefon</option>
+                <option value="email">Email</option>
+                <option value="adresaHotel">Adresa</option>
+                <option value="brojSoba">Broj soba</option>
+                <option value="wikiStranica">Wikipedia stranica</option>
+                <option value="godIzgradnje">Godina izgradnje</option>
+                <option value="nazivGrad">Grad</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Search">
+        </form>
+        <!--HTML tablice koja se zajedno s obrascem za filtriranje i asinkronim pozivom za dohvaćanje podataka-->
+        <p>
 
-    <table>
-        <tr>    <!--Popis atributa-->
-            <th>Hotel ID</th>
-            <th>Ime hotela</th>
-            <th>Broj zvjezdica</th>
-            <th>Godina izgradnje</th>
-            <th>Wiki handle</th>
-            <th>Telefon</th>
-            <th>Adresa</th>
-            <th>Email</th>
-            <th>Broj soba</th>
-            <th>Ime grada</th>
-            <th>Poštanski broj</th>
-        </tr>
-        <tr id="promjena">
+        </p>
+        <p>
 
-        </tr>
-    <!--    <% for (let hotel of hotels) { %>
-            <tr id="promjena">
-                <td><%= hotel.imeHotel %></td>
-                <td><%= hotel.brZvjezdica %></td>
-                <td><%= hotel.godIzgradnje %></td>
-                <td><%= hotel.wikiStranica %></td>
-                <td><%= hotel.telefonHotel %></td>
-                <td><%= hotel.adresaHotel %></td>
-                <td><%= hotel.email %></td>
-                <td><%= hotel.brojSoba %></td>
-                <td><%= hotel.nazivGrad %></td>
-                <td><%= hotel.pbrGrad %></td>
+        </p>
+        <form name="formDodaj" method="GET" action="/datatable/dodaj">
+            <input class="math-btn" type="submit" name="dodaj" value='Dodaj novi hotel'/>
+        </form>
+        <table>
+            <tr>    <!--Popis atributa-->
+                <th>Hotel ID    </th>
+                <th>Ime hotela  </th>
+                <th>Broj zvjezdica  </th>
+                <th>Telefon     </th>
+                <th>Email   </th>
+                <th>Adresa  </th>
+                <th>Broj soba   </th>
+                <th>Wiki handle </th>
+                <th>Godina izgradnje</th>
+                <th>Ime grada   </th>
+                <th>Poštanski broj  </th>
             </tr>
-        <% } %>
-    -->
-    </table>
+            <tr id="promjena">
+
+            </tr>
+            <% for (let hotel of hotels) { %>
+                <tr id="promjena">
+                    <td> <%= hotel.idhotel %> </td>
+                    <td> <%= hotel.imehotel %> </td>
+                    <td> <%= hotel.brzvjezdica %> </td>
+                    <td> <%= hotel.telefonhotel %> </td>
+                    <td> <%= hotel.email %> </td>
+                    <td> <%= hotel.adresahotel %> </td>
+                    <td> <%= hotel.brojsoba %> </td>
+                    <td> <%= hotel.wikistranica %> </td>
+                    <td> <%= hotel.godizgradnje %> </td>
+                    <td> <%= hotel.nazivgrad %> </td>
+                    <td> <%= hotel.pbrgrad %> </td>
+                    <td class="gumbi">
+                        <div>
+                            <form name="formEdit" method="GET" action="/datatable/edit/<%= hotel.idhotel %>">
+                                <input class="math-btn" type="submit" name="edit" value='E'/>
+                            </form>
+                            <form name="formDelete" method="POST" action="/datatable/delete/<%= hotel.idhotel %>">
+                                <input type="submit" name="delete" value='D' onClick="return confirm('Are you sure you want to delete?')" />
+                                <input type="hidden" name="_method" value="DELETE" />
+                            </form>
+                        </div>                                             
+                    </td>
+                </tr>
+            <% } %>
+        
+        </table>
+    </main>
 
 </body>
 
 <script>
 
-    function kojePolje(str) {
-        localStorage.setItem("trazeniAtribut", str);
-    }
-    function pretrazi() {
-        var vrijednost = document.getElementById("vrijednost").value;
-        //console.log(vrijednost);
-        localStorage.setItem("unesenaVrijednost", vrijednost);
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("promjena").innerHTML = this.responseText;
-            }
-        };
-
-        xhttp.open("GET", "getRows.js", true);
-        xhttp.send();
-    }
 </script>
 
 </html>
