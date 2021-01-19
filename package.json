@@ -1,27 +1,18 @@
 {
-  "name": "lab",
+  "name": "lab4",
   "version": "1.0.0",
-  "description": "Otvoreno racunarstvo laboratorijske vjezbe",
-  "main": "server.js",
+  "description": "4. laboratorijska vježba iz OR",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "seed": "node config.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "express"
-  ],
   "author": "Klara Krmpotic",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "connect-pg-simple": "^6.2.1",
-    "ejs": "^3.0.1",
+    "cache-manager": "^3.4.0",
+    "cache-manager-fs": "^1.0.8",
     "express": "^4.17.1",
-    "express-myconnection": "^1.0.4",
-    "express-session": "^1.17.1",
-    "express-validator": "^6.4.1",
-    "method-override": "^3.0.0",
-    "mysql": "^2.18.1",
-    "pg": "^8.0.3"
+    "node-fetch": "^2.6.1",
+    "pg": "^8.5.1"
   }
 }

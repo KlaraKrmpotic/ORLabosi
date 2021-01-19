@@ -81,9 +81,9 @@
                             <form name="formEdit" method="GET" action="/datatable/edit/<%= hotel.idhotel %>">
                                 <input class="math-btn" type="submit" name="edit" value='E'/>
                             </form>
-                            <form name="formDelete" method="POST" action="/datatable/delete/<%= hotel.idhotel %>">
+                            <form name="formDelete" method="DELETE" action="/datatable/delete/<%= hotel.idhotel %>">
                                 <input type="submit" name="delete" value='D' onClick="return confirm('Are you sure you want to delete?')" />
-                                <input type="hidden" name="_method" value="DELETE" />
+                                <!--<input type="hidden" name="_method" value="DELETE" />-->
                             </form>
                         </div>                                             
                     </td>
